@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Информация о товаре: ' + ${product.getTitle()}">Информация о товаре</title>
+    <head th:replace="fragments/head"/>
+</head>
+<body>
+
+<div class="container">
+    <div th:replace="fragments/header"></div>
+    <div th:replace="fragments/nav"></div>
+
+</div>
+<div class="container">
+    <h1 th:text="${product.getTitle()}"></h1>
+</div>
+<div class="container mb-4">
+
+    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
+    <p th:text="'Описание: ' + ${product.getDescription()}"></p>
+    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+    <p th:text="'Страна производства: ' + ${product.getWarehouse()}"></p>
+    <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+    <p th:text="'Производитель: ' + ${product.getCategory().getName()}"></p>
+
+    <div th:each="img : ${product.getImageList()}">
+        <img th:src="'/img/' + ${img.getFileName()}" width="300px">
+    </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>
